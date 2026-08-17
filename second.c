@@ -4,12 +4,12 @@
 int main() {
     pid_t pid = fork();
 
-    if (pid < 0) { //-1 for the error.
+    if (pid < 0) { 
         perror("fork failed"); 
-    } else if (pid == 0) { // zero for the child
+    } else if (pid == 0) { 
         printf("child\n");
     } else {
-        printf("parent\n");// positive for the parent
+        printf("parent\n");
     }
 
     return 0;

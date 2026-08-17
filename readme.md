@@ -1,0 +1,2 @@
+1.wap to find sum of elements in an array within child process and then check whether given sum is prime or not in given process
+2.wap to read string from the user within child process and then print all the permutation of character of given string

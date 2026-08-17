@@ -3,7 +3,7 @@
 #include <sys/wait.h>
 
 int main() {
-    pid_t pid = fork(); //execlp() //wait()
+    pid_t pid = fork(); 
 
     if (pid == 0) {
         execlp("ls", "ls", "-l", NULL);
