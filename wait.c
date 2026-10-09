@@ -1,26 +1,23 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/wait.h>
-
-int main() {
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/wait.h>
+int main(){
+    int status;
     pid_t pid = fork();
-
-    if (pid < 0) {
-        printf("Fork failed\n");
+    if(pid==0) { //child
+        printf("Child is curently running, and exiting with status 10...\n");
+        exit(10);
     }
-    else if (pid == 0) {
-        
-        printf("Child: PID = %d\n", getpid());
-        printf("Child is running...\n");
-        sleep(2); 
-        printf("Child finished.\n");
+    else if(pid>0) { //parent
+        wait(&status);
+        printf("PArent is currently running\n");
+        if(WIFEXITED(status)) {
+            printf("Child exited with exit status : %d",WEXITSTATUS(status));
+        }
     }
-    else {
-        printf("Parent: PID = %d\n", getpid());
-
-        wait(NULL);   
-
-        printf("Parent resumes after child finishes.\n");
+    else{
+        printf("Fork failes!!!");
     }
 
     return 0;
